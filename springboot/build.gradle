@@ -2,7 +2,14 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.1.9.RELEASE'
 	id 'io.spring.dependency-management' version '1.1.0'
+//	id 'com.palantir.docker' version '0.24.0'
 }
+
+//docker {
+//	name 'my-app'
+//	files bootJar.archivePath
+//	buildArgs(['JAR_FILE': bootJar.archiveFileName.get()])
+//}
 
 group = 'com.jojoldu.book'
 version = '0.0.1-SNAPSHOT'
@@ -29,7 +36,7 @@ dependencies {
 
 	implementation "org.mariadb.jdbc:mariadb-java-client"
 
-
+	runtimeOnly 'mysql:mysql-connector-java'
 	compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
