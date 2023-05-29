@@ -4,14 +4,14 @@ services:
     image: mysql:latest
     environment:
       MYSQL_DATABASE: test
-      MYSQL_USER:
-      MYSQL_PASSWORD:
-      MYSQL_ROOT_HOST:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_USER: ## USER
+      MYSQL_PASSWORD: ## PASSWORD
+      MYSQL_ROOT_HOST: ## ROOT_USER
+      MYSQL_ROOT_PASSWORD: ## ROOT_PASSWORD
     volumes:
       - ./db/data:/var/lib/mysql
-#    networks:
-#      - test_network
+    networks:
+      - test_network
     ports:
       - 3306:3306
     restart: always
@@ -28,5 +28,5 @@ services:
 #    networks:
 #      - test_network
 
-#networks:
-#  test_network:
+networks:
+  test_network:
