@@ -3,13 +3,15 @@ services:
   database:
     image: mysql:latest
     environment:
+      MYSQL_LOWER_CASE_TABLE_NAMES: 2
       MYSQL_DATABASE: test
-      MYSQL_USER: ## USER
-      MYSQL_PASSWORD: ## PASSWORD
-      MYSQL_ROOT_HOST: ## ROOT_USER
-      MYSQL_ROOT_PASSWORD: ## ROOT_PASSWORD
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_HOST: ${MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
     volumes:
-      - ./db/data:/var/lib/mysql
+      - ${MYSQL_VOLUME_PATH}:/var/lib/mysql
     networks:
       - test_network
     ports:
