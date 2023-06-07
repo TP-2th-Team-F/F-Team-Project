@@ -1,15 +1,9 @@
 package com.jojoldu.book.springboot.web.dto;
 
-import com.jojoldu.book.springboot.domain.posts.Numballs;
+import com.jojoldu.book.springboot.domain.numballs.Numballs;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.Column;
-import java.util.List;
 
 
 @Getter

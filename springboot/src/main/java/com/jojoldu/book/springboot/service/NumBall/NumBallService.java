@@ -1,20 +1,33 @@
 package com.jojoldu.book.springboot.service.NumBall;
 
-import com.jojoldu.book.springboot.domain.posts.Numballs;
-import com.jojoldu.book.springboot.domain.posts.NumballsRepository;
+import com.jojoldu.book.springboot.domain.numballs.Numballs;
+import com.jojoldu.book.springboot.domain.numballs.NumballsRepository;
 import com.jojoldu.book.springboot.web.dto.NumballsRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Scanner;
 
+
 @RequiredArgsConstructor
 @Service
-public class NumBallService {
+public class NumBallService implements NumberService{
     private final NumballsRepository numballsRepository;
+    @Override
+    public Numballs saveNumber(String myGuess) {
+        Numballs numball = new Numballs();
+        numball.setMyGuess(myGuess);
+        numball.setAnswer(getResult(answer, myGuess));
+        return numballsRepository.save(numball);
+    }
+
+    @Override
+    public Numballs getNumberById(Long id) {
+        return numballsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Number not found"));
+    }
+
 
     @Transactional
     public Long save(NumballsRequestDto requestDto){
@@ -63,7 +76,7 @@ public class NumBallService {
             }
         }
 
-        return "result >> strike: "+strikeNum+" ball: "+ballNum;
+        return "strike: "+strikeNum+" ball: "+ballNum;
     }
 
     public static void RunGame(){

@@ -1,19 +1,18 @@
-package com.jojoldu.book.springboot.domain.posts;
+package com.jojoldu.book.springboot.domain.numballs;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.jojoldu.book.springboot.domain.posts.BaseTimeEntity;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Numballs extends BaseTimeEntity{
+public class Numballs extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
