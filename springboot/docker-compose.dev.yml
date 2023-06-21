@@ -1,0 +1,47 @@
+version: "3"
+services:
+  database:
+    image: mysql:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/test?useSSL=true&serverTimezone=UTC
+      MYSQL_LOWER_CASE_TABLE_NAMES: 2
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_HOST: root
+      MYSQL_ROOT_PASSWORD: Abcd123@
+    volumes:
+      - ${MYSQL_VOLUME_PATH}:/var/lib/mysql
+    networks:
+      - test_network
+    ports:
+      - 3306:3306
+    restart: always
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus/
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    volumes:
+      - ./grafana:/var/lib/grafana
+#  application:
+#    build: .
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/userdb
+#    depends_on:
+#      - database
+#    ports:
+#      - 8080:8080
+#    restart: always
+#    networks:
+#      - test_network
+
+networks:
+  test_network:

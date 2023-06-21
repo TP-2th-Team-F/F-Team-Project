@@ -3,10 +3,11 @@ services:
   database:
     image: mysql:latest
     environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://freelec-springboot2-webservice.cezw5zsdtpd1.ap-northeast-2.rds.amazonaws.com:3306/test?useSSL=false&serverTimezone=UTC
       MYSQL_LOWER_CASE_TABLE_NAMES: 2
       MYSQL_DATABASE: test
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_HOST: ${MYSQL_ROOT_USER}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
