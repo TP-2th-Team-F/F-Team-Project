@@ -44,11 +44,6 @@ public class IndexController {
         return "posts-update";
     }
 
-    @RequestMapping("/chat")
-    public ModelAndView chat() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("chat");
-        return mv;
-    }
+
 
 }
