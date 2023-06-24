@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,5 +44,11 @@ public class IndexController {
         return "posts-update";
     }
 
+    @RequestMapping("/chat")
+    public ModelAndView chat() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("chat");
+        return mv;
+    }
 
 }
