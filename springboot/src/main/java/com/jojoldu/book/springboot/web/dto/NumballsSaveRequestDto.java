@@ -5,20 +5,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @NoArgsConstructor
-public class NumballsRequestDto {
-    private String myGuess;
+public class NumballsSaveRequestDto {
+    private String player;
 
     @Builder
-    public NumballsRequestDto(String myGuess){
-        this.myGuess = myGuess;
+    public NumballsSaveRequestDto(String player){
+        this.player = player;
     }
 
     public Numballs toEntity(){
         return Numballs.builder()
-                .myGuess(myGuess)
+                .player(player)
                 .build();
     }
 }

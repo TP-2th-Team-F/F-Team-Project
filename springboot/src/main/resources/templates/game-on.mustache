@@ -1,0 +1,22 @@
+{{>layout/header}}
+<div>
+    <h1>!!숫자야구!!</h1>
+
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="id">Num of the Game</label>
+                <input type="text" class="form-control" id="id" value="{{numball.id}}" readonly>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="my-guess" placeholder="상대 숫자를 추측하세요.">
+            </div>
+        </form>
+
+        <button type="button" class="btn btn-primary" id="btn-refresh">처음부터</button>
+        <button type="button" class="btn btn-primary" id="btn-submit">확정</button>
+
+    </div>
+
+</div>
+{{>layout/footer}}
